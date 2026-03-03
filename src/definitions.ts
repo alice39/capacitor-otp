@@ -63,7 +63,7 @@ export interface OtpErrorEvent {
   message: string;
 }
 
-export interface OtpTimeoutEvent {
+export type OtpTimeoutEvent = {
   // empty – the 5-minute window expired
 }
 
