@@ -2,7 +2,6 @@ import { WebPlugin } from '@capacitor/core';
 
 import type {
   OtpPlugin,
-  StartListeningOptions,
   AppHashResult,
   AvailabilityResult,
 } from './definitions';
@@ -17,7 +16,7 @@ export class OtpWeb extends WebPlugin implements OtpPlugin {
     return { available: false, reason: 'UNSUPPORTED' };
   }
 
-  async startListening(_options?: StartListeningOptions): Promise<void> {
+  async startListening(): Promise<void> {
     throw this.unimplemented('SMS OTP listening is not available on the web.');
   }
 
