@@ -1,37 +1,43 @@
 # capacitor-otp
 
-A capacitor plugin for automatic OTP (one-time password) SMS reading
+Automatic OTP SMS reading for Capacitor apps on iOS and Android under MIT license.
 
-## Install
+## Features
+
+- **Android**: Google Play Services SMS Retriever (automatic) or User Consent API (with user interaction)
+- **iOS**: Automatic detection with clipboard fallback option
+- No `READ_SMS` permission required — uses modern, privacy-respecting APIs
+- Regex-based OTP extraction with customizable patterns
+- Event-based API with error and timeout handling
+
+## Installation
 
 ```bash
-npm install capacitor-otp
+npm install github:alice39/capacitor-otp
 npx cap sync
 ```
 
-## API
-
-<docgen-index>
-
-* [`echo(...)`](#echo)
-
-</docgen-index>
-
-<docgen-api>
-<!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
-
-### echo(...)
+## Quick Start
 
 ```typescript
-echo(options: { value: string; }) => Promise<{ value: string; }>
+import { Otp } from 'capacitor-otp';
+
+// Start listening for OTPs
+const listener = await Otp.startListening({
+	mode: 'consent', // Android: 'consent' or 'retriever'
+	otpPattern: '(\\d{6})', // Extract 6-digit code
+});
+
+// Handle OTP received
+listener.on('otpReceived', (event) => {
+	console.log('OTP:', event.otp);
+});
+
+// Handle errors
+listener.on('otpError', (event) => {
+	console.error('Error:', event.message);
+});
+
+// Stop listening
+await Otp.stopListening();
 ```
-
-| Param         | Type                            |
-| ------------- | ------------------------------- |
-| **`options`** | <code>{ value: string; }</code> |
-
-**Returns:** <code>Promise&lt;{ value: string; }&gt;</code>
-
---------------------
-
-</docgen-api>
