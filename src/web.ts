@@ -1,10 +1,6 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type {
-  OtpPlugin,
-  AppHashResult,
-  AvailabilityResult,
-} from './definitions';
+import type { OtpPlugin, AppHashResult, AvailabilityResult } from './definitions';
 
 /**
  * Web implementation of OtpPlugin.

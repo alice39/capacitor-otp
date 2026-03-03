@@ -14,22 +14,22 @@ public class OtpPlugin: CAPPlugin, CAPBridgedPlugin {
         CAPPluginMethod(name: "isAvailable", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "startListening", returnType: CAPPluginReturnPromise),
         CAPPluginMethod(name: "stopListening", returnType: CAPPluginReturnPromise),
-        CAPPluginMethod(name: "getAppHash", returnType: CAPPluginReturnPromise),
+        CAPPluginMethod(name: "getAppHash", returnType: CAPPluginReturnPromise)
     ]
-    
+
     // MARK: - Private State
 
     private var clipboardTimer: Timer?
     private var lastChangeCount: Int = 0
     private var otpPattern: String = "(\\d{4,8})"
-    
+
     /// Whether clipboard monitoring is allowed on this iOS version by default.
     /// iOS 16+ triggers a paste banner on every clipboard read.
     private var isClipboardAllowedByDefault: Bool {
         if #available(iOS 16, *) { return false }
         return true
     }
-    
+
     // MARK: - isAvailable
 
     @objc func isAvailable(_ call: CAPPluginCall) {
@@ -49,7 +49,7 @@ public class OtpPlugin: CAPPlugin, CAPBridgedPlugin {
             ])
         }
     }
-    
+
     // MARK: - startListening
 
     @objc func startListening(_ call: CAPPluginCall) {
@@ -105,13 +105,13 @@ public class OtpPlugin: CAPPlugin, CAPBridgedPlugin {
         }
         call.resolve()
     }
-    
+
     // MARK: - Android-only (unimplemented)
 
     @objc func getAppHash(_ call: CAPPluginCall) {
         call.unimplemented("App hash is an Android-only feature.")
     }
-    
+
     // MARK: - Clipboard Monitoring
 
     private func checkClipboard() {

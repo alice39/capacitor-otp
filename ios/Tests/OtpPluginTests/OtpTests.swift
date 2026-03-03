@@ -71,7 +71,7 @@ class OtpTests: XCTestCase {
             "isAvailable",
             "startListening",
             "stopListening",
-            "getAppHash",
+            "getAppHash"
         ]
         let registered = plugin.pluginMethods.map { $0.name }
         for method in expected {
