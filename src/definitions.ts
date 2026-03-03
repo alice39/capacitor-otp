@@ -65,7 +65,7 @@ export interface OtpErrorEvent {
 
 export type OtpTimeoutEvent = {
   // empty – the 5-minute window expired
-}
+};
 
 export interface AppHashResult {
   /** The 11-character SMS Retriever app hash (Android only). */
@@ -122,20 +122,9 @@ export interface OtpPlugin {
   /**
    * Subscribe to plugin events.
    */
-  addListener(
-    eventName: 'otpReceived',
-    listenerFunc: (event: OtpReceivedEvent) => void,
-  ): Promise<PluginListenerHandle>;
-
-  addListener(
-    eventName: 'otpTimeout',
-    listenerFunc: (event: OtpTimeoutEvent) => void,
-  ): Promise<PluginListenerHandle>;
-
-  addListener(
-    eventName: 'otpError',
-    listenerFunc: (event: OtpErrorEvent) => void,
-  ): Promise<PluginListenerHandle>;
+  addListener(eventName: 'otpReceived', listenerFunc: (event: OtpReceivedEvent) => void): Promise<PluginListenerHandle>;
+  addListener(eventName: 'otpTimeout', listenerFunc: (event: OtpTimeoutEvent) => void): Promise<PluginListenerHandle>;
+  addListener(eventName: 'otpError', listenerFunc: (event: OtpErrorEvent) => void): Promise<PluginListenerHandle>;
 
   /**
    * Remove all listeners for this plugin.
