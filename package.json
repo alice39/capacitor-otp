@@ -13,6 +13,7 @@
     "ios/Sources",
     "ios/Tests",
     "Package.swift",
+    "Alice39CapacitorOtp.podspec",
     "CapacitorOtp.podspec"
   ],
   "author": "A.L.I.C.E",
